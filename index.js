@@ -31,7 +31,7 @@ const success = chalk.keyword("green");
             return resultArray;
         })
 
-       await fs.writeFile("results.json", JSON.stringify(results), function(err){
+       await fs.writeFile("results.json", JSON.stringify(results, undefined, 4), function(err){
           if (err) throw err;
           console.log("Saved results");
        })
