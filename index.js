@@ -13,7 +13,6 @@ const success = chalk.keyword("green");
         await page.setViewport({width: 1920, height: 1080})
         await page.goto(`http://mxsimulator.com/servers/official.mxslobby.com:19801/races/8515.html`);
         await page.waitForTimeout(2000);
-
         let results = await page.evaluate(()=>{
             let position = document.querySelectorAll(`td.pos`);
             let number = document.querySelectorAll(`td.no`);
@@ -28,14 +27,14 @@ const success = chalk.keyword("green");
                     besttime: besttime[i].innerText
                 };
             }
-            return resultArray;
+            return {resultArray};
         })
 
        await fs.writeFile("results.json", JSON.stringify(results, undefined, 4), function(err){
           if (err) throw err;
           console.log("Saved results");
        })
-        console.log(success("Browser Closed"));
+       console.log(success("Browser Closed with success"));
     } catch (err){
         console.log(error(err));
         //await browser.close();
