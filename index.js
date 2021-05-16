@@ -34,6 +34,8 @@ const success = chalk.keyword("green");
           if (err) throw err;
           console.log("Saved results");
        })
+
+       await browser.close();
        console.log(success("Browser Closed with success"));
     } catch (err){
         console.log(error(err));
