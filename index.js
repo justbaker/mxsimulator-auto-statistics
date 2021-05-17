@@ -21,10 +21,10 @@ const success = chalk.keyword("green");
             let resultArray = [];
             for (let i=0; i<position.length; i++){
                 resultArray[i] = {
-                    position: position[i].innerText,
-                    number: number[i].innerText,
+                    position: parseInt(position[i].innerText, 10),
+                    number: parseInt(number[i].innerText, 10),
                     name: name[i].innerText,
-                    besttime: besttime[i].innerText
+                    besttime: parseFloat(besttime[i].innerText)
                 };
             }
             return {resultArray};

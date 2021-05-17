@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "chalk": "^4.1.1",
     "nightmare": "^3.0.2",
     "node": "^16.0.0",
+    "node-fetch": "^2.6.1",
     "puppeteer": "^9.0.0"
   }
 }

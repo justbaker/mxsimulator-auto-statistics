@@ -13,24 +13,23 @@ const success = chalk.keyword("green");
         await page.goto(`http://mxsimulator.com/servers/official.mxslobby.com:19801/races/8515.html`);
         await page.setViewport({width: 1920, height: 1080})
         let leaders = await page.evaluate(()=>{
-            let leader = document.querySelector("table.laptimes:nth-child(7) > tbody:nth-child(1) > tr:nth-child(2)").querySelectorAll("td");
-            let leaderArray = [];
-            let testArray = [];
 
+            let leader = document.querySelector("table.laptimes:nth-child(7) > tbody:nth-child(1) > tr:nth-child(2)").querySelectorAll("td");
+            //let leaderArray = [];
             for (let i=0; i<leader.length; i++){
-                testArray.push(parseInt(leader[i].innerText, 10));
                 leaderArray[i] = {
                     lap: i+1,
                     leader: parseInt(leader[i].innerText, 10)
                 };
             }
-            return {testArray};
+            return {leader};
         })
+        await console.log(leaders);
 
 
 
 
-        await fs.writeFile("leaders.json", JSON.stringify(leaders), function(err){
+        await fs.writeFile("leaders.json", JSON.stringify(leaders, undefined, 4), function(err){
             if (err) throw err;
             console.log("Saved results");
         })
